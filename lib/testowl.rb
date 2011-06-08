@@ -1,0 +1,8 @@
+require 'testowl/growl'
+require 'testowl/monitor'
+require 'testowl/rspec_runner'
+require 'testowl/test_unit_runner'
+require 'testowl/version'
+require 'watchr'
+require 'digest'
+require 'active_support/inflector'

@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'testowl'
+require 'active_support/inflector'
+
+$LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib') unless $LOAD_PATH.include?(File.dirname(__FILE__) + '/../lib')
+CONFIG = File.dirname(__FILE__) + '/../lib/testowl/config.rb'
+
+
+begin
+  success = Testowl::Monitor.new.run
+  Kernel.exit 1 unless success
+rescue SystemExit => e
+  Kernel.exit(e.status)
+rescue Exception => e
+  STDERR.puts("#{e.message} (#{e.class})")
+  STDERR.puts(e.backtrace.join("\n"))
+  Kernel.exit 1
+end
