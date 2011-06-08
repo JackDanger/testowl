@@ -19,9 +19,16 @@ Er, that's it. If you're using [bundler](http://gembundler.com/) then you should
 Dependencies
 ==
 
-It uses Watchr to monitor which files are changed. 
+It uses [growlnotifiy](http://growl.info/extras.php) to send messages to Growl. It'll probably fall over if you don't have this installed, but I want to make that more tolerant.
 
-It uses [growlnotifiy](http://growl.info/extras.php) to send messages to Growl.
+Bundler
+==
+
+To install using Bundler:
+
+    group :test do
+      gem 'testowl', :git => "git@github.com:billhorsman/testowl.git"
+    end
 
 Test Unit
 ==
@@ -35,16 +42,32 @@ Spork
 
 If you are running Spork then it will use it (assuming it is on port 8988) but if it gets no response on that port then it will just run the tests directly.
 
+Spork doesn't support Test Unit out of the box, but it does if you include the [spork-testunit](https://github.com/timcharper/spork-testunit) gem. This is what your Gemfile might look like
+
+    group :test do
+      gem 'spork', "~> 0.9.0.rc"
+      gem 'spork-testunit', :git => 'git://github.com/timcharper/spork-testunit.git'
+      gem 'testowl', :git => "git@github.com:billhorsman/testowl.git"
+    end
+
+To get it running you just:
+
+    $ bundle exec spork
+    Using TestUnit
+    Preloading Rails environment
+    Loading Spork.prefork block...
+    Spork is ready and listening on 8988!
+
 Todo
 ==
 
 * Support Rspec
 * Make Drb port configurable
-* Make DSL to define relationship between changed files and tests to run.
-* Add some more rules for relationships
+* DSL to define relationship between changed files and tests to run.
+* Add some more rules for relationships (with or without DSL)
 * Make it more resilient to growlnotify not being installed
 
 Credits
 ==
 
-Copyright (c) 2011 (http://bill.logicalcobwebs.com)[Bill Horsman], released under the MIT license.
+Copyright (c) 2011 [Bill Horsman](http://bill.logicalcobwebs.com), released under the MIT license.
