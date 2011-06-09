@@ -1,8 +1,13 @@
 TestOwl
 =
 
-Narrow Minded TestUnit/RSpec, Watchr and Growl Integration for Continuous Testing. TestOwl assumes you are running Rails and makes some guesses about what tests depend on what files. For instance, if you change model Foo then it looks for foo_test.rb and foos_controller_test.rb.
+<code>
+     <span style="color:red">O</span>   <span style="color: green">O</span>
+       V
+</code>
 
+Narrow Minded TestUnit/RSpec, Watchr and Growl Integration for Continuous Testing. TestOwl assumes you are running Rails and makes some guesses about what tests depend on what files. For instance, if you change model Foo then it looks for foo_test.rb and foos_controller_test.rb.
+   
 At the very least, it will run each test every time you save it.
 
 Usage 
