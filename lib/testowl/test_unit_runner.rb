@@ -11,7 +11,6 @@ module Testowl
   class TestUnitRunner
 
     def run(files)
-      puts "Testing #{files.join(", ")}"
       results = nil
       begin
         results = runDrb(files)
