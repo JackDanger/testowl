@@ -32,10 +32,15 @@ To install using Bundler:
       gem 'testowl', :git => "git@github.com:billhorsman/testowl.git"
     end
 
+RSpec
+==
+
+TestOwl looks for <code>spec/spec_helper.rb</code> and if it finds it then it uses RSpec.
+
 Test Unit
 ==
 
-It assumes Test Unit at the moment, although it wouldn't take much to support RSpec too.
+TestOwl looks for <code>test/test_helper.rb</code> and if it finds it then it uses Test Unit. Actually, it looks for <code>spec/spec_helper.rb</code> first and only checks for Test Unit if it can't find RSpec.
 
 Spork
 ==
@@ -63,7 +68,6 @@ To get it running you just:
 Todo
 ==
 
-* Support Rspec
 * Make Drb port configurable
 * DSL to define relationship between changed files and tests to run.
 * Add some more rules for relationships (with or without DSL)
