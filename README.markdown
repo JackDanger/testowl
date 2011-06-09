@@ -21,7 +21,7 @@ Er, that's it. If you're using [bundler](http://gembundler.com/) then you should
 Dependencies
 ==
 
-It uses [growlnotifiy](http://growl.info/extras.php) to send messages to Growl. It'll probably fall over if you don't have this installed, but I want to make that more tolerant.
+It uses [growlnotifiy](http://growl.info/extras.php) to send messages to Growl. If you don't have it installed then it will only write a message to your terminal. To get the full benefit of TestOwl you should definitely install growlnotify.
 
 Bundler
 ==
@@ -67,7 +67,6 @@ Todo
 * Make Drb port configurable
 * DSL to define relationship between changed files and tests to run.
 * Add some more rules for relationships (with or without DSL)
-* Make it more resilient to growlnotify not being installed
 
 Credits
 ==

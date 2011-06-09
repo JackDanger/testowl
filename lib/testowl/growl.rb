@@ -10,7 +10,7 @@ module Testowl
         if @warning_done
           puts "Skipping growl"
         else
-          puts "If you install #{Growlnotify} you'll get growl notifications. See the wiki."
+          puts "If you install #{Growlnotify} you'll get growl notifications. See the README."
           @warning_done = true
         end
       else
