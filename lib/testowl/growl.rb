@@ -22,6 +22,7 @@ module Testowl
         options << "--identifier #{Digest::MD5.hexdigest files.join}" # (used for coalescing)
         title = "RSpec #{title} (#{project})"
         system %(#{growlnotify} #{options.join(' ')} '#{title}' &)
+        puts message
       end
     end
 

@@ -3,7 +3,6 @@ module Testowl
 
     def run(files)
       results = `rspec -c #{files.join(" ")}`
-      puts "Done"
       lines = results.split("\n")
       exception_message = lines.detect{|line| line =~ /^Exception encountered/ }
       counts = lines.detect{|line| line =~ /(\d+)\sexamples?,\s(\d+)\sfailures?/ }
