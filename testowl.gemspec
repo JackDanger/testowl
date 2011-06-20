@@ -8,9 +8,9 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Bill Horsman"]
   s.email       = ["bill@logicalcobwebs.com"]
-  s.homepage    = ""
-  s.summary     = %q{TestUnit, Watchr and Growl Integration for Continuous Testing}
-  s.description = %q{TestUnit, Watchr and Growl Integration for Continuous Testing}
+  s.homepage    = "https://github.com/billhorsman/testowl"
+  s.summary     = %q{TestUnit/RSpec, Watchr and Growl Integration for Continuous Testing}
+  s.description = %q{TestUnit/RSpec, Watchr and Growl Integration for Continuous Testing}
 
   s.add_runtime_dependency "watchr"
   s.add_runtime_dependency "rails"
