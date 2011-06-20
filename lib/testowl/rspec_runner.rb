@@ -19,7 +19,7 @@ module Testowl
         if exception_message
           raise exception_message
         else
-          raise "Problem interpreting output"
+          raise "Problem interpreting result. Please check the terminal output."
         end
       end
     end

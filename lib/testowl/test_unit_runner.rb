@@ -35,7 +35,7 @@ module Testowl
           raise exception_message
         else
           $stderr.print results
-          raise "Problem interpreting output"
+          raise "Problem interpreting result. Please check the terminal output."
         end
       end
     end
