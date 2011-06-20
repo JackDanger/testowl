@@ -22,37 +22,28 @@ module Testowl
       # Watch the scripts themselves
       script.watch("#{test_dir}/.*/*_#{test_suffix}\.rb") do |match|
         puts "Detected change in #{match[0]}"
-        fire [match[0]], "has been updated"
+        run_test(match[0])
       end
       # Watch models
       script.watch("app/models/(.*)\.rb") do |match|
         puts "Detected change in #{match[0]}"
-        tests = []
-        model = match[1]
-        tests += tests_for_model(model)
-        fire tests, "triggered by #{match[0]}"
+        run_model(match[1], "triggered by #{match[0]}")
       end
       puts "Monitoring files..."
       Watchr::Controller.new(script, Watchr.handler.new).run
     end
 
-    def fire(files, reason)
-      return if files.nil? || files.size == 0
-      # We don't want to do no performance testing
-      files = files.map{|file| file =~ /^test\/performance\// ? nil : file }.compact
-      puts "Running #{files.join(", ")}"
-      begin
-        test_count, fail_count, timing = @runner.run(files)
-        if test_count == 0
-          Growl.grr "Empty Test", "No tests run", :error, files, reason
-        elsif fail_count > 0
-          Growl.grr "Fail", "#{fail_count} out of #{test_count} test#{'s' if test_count > 1} failed in #{timing} :(", :failed, files, reason
-        else
-          Growl.grr "Pass", "All #{test_count} example#{'s' if test_count > 1} passed in #{timing} :)", :success, files, reason
-        end
-      rescue => exc
-        Growl.grr "Exception", exc.message, :error, files, reason
-      end
+    def run_test(file)
+      tester = Tester.new(@runner, "has been updated")
+      tester.add file
+      tester.run
+    end
+
+    def run_model(model_name, reason)
+      tester = Tester.new(@runner, reason)
+      tester.add Dir["#{test_dir}/**/#{model_name}_#{test_suffix}.rb"]
+      tester.add Dir["#{test_dir}/**/#{model_name.pluralize}_controller_#{test_suffix}.rb"]
+      tester.run
     end
 
     def tests_for_model(model)

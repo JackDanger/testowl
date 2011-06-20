@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
     "lib/testowl/monitor.rb",
     "lib/testowl/rspec_runner.rb",
     "lib/testowl/test_unit_runner.rb",
+    "lib/testowl/tester.rb",
     "lib/testowl/version.rb",
     "testowl.gemspec"
   ]
