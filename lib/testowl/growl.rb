@@ -20,7 +20,7 @@ module Testowl
         options << "--sticky" if status == :error
         options << "--image '#{image_path(status)}'"
         options << "--identifier #{Digest::MD5.hexdigest files.join}" # (used for coalescing)
-        title = "RSpec #{title} (#{project})"
+        title = "TestOwl #{title} (#{project})"
         system %(#{growlnotify} #{options.join(' ')} '#{title}' &)
         puts message
       end
